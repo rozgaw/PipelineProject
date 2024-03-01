@@ -22,9 +22,9 @@ for sample_folder in os.listdir(parent_folder):
     sample_path = os.path.join(parent_folder, sample_folder)
     sample_name = os.path.basename(sample_path)
 
-    # gets the paths to the paired-end FASTQ files
-    fastq1 = os.path.join(sample_folder, f"{sample_name}_1.fastq")
-    fastq2 = os.path.join(sample_folder, f"{sample_name}_2.fastq")
+    # gets the paths to the paired-end fastq files
+    fastq1 = os.path.join(sample_path, f"{sample_name}_1.fastq")
+    fastq2 = os.path.join(sample_path, f"{sample_name}_2.fastq")
     
     # runs kallisto quant for the current sample
     os.system(f"kallisto quant -i index.idx -o results_kal/{sample_name} -b 10 -t 2 {fastq1} {fastq2}")
