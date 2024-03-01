@@ -40,3 +40,13 @@ Finally, the wrapper script in this repository will do the following:
 
 For this pipeline, sample data is provided. This data is a fragment of the original data modified by running the code below in the terminal. Update data and sampledata to the correct input file name and output.
 head -n 40000 data.fastq > sampledata.fastq
+The sample data is stored in the data folder.
+
+Notes:
+- Make sure to set your working directory with a similar file path organization for the wrapper to run correctly.
+- PipelineProject folder has data folder and all the required .py and r scripts.
+- Data folder has the paired end fastq files for each sample in a folder named the sample name.
+- Make sure to update the sample dictionary (samp_dict)in the wrapper python script to reflect your samples, conditions, and file paths to the kallisto output.
+
+Finally to run the wrapper python script, run the following command in your terminal:
+"python Wrapper.py -email <your_email>" replacing the "<your_email>" with your actual email adress
