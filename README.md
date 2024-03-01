@@ -8,11 +8,11 @@ Differential expression pipeline to compare HCMV transcriptomes of two individua
 
 ### Before Running Pipeline
 Before running this pipeline, download the transcriptomes from two patient donors from SRA and convert to paired-end fastq files. This can be done by running the following command in your terminal (where SRA_File_Links is a text file that contains each of the SRA links for the patients on a new line.
-
+    
 Download the SRA files from terminal:
-
+    
 wget -i SRA_File_Links  
-
+    
 For this example, SRA_File_Links.txt contains the following with a newline after each url (see SRA_File_Links for correct formatting):  
 
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660030/SRR5660030  
@@ -29,6 +29,7 @@ done
 For different analyses, make sure to update the sample names to match the downloaded files.   
 
 Next, rearrange the file organization. I downloaded the SRA files into a folder called "data" and then grouped each pair of paired-end reads into a folder of their sample name within the "data" folder.   
+    
 For example, here are the file paths for the paired-end reads from sample SRR5660030 where ~ signifies the working directory:
    
 ~/data/SRR5660030/SRR5660030_1.fastq    
