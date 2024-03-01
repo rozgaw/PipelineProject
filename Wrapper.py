@@ -27,7 +27,7 @@ email = arguments.email
 log_file = open("PipelineProject_Roza_Gawin/PipelineProject.log", "a")
 
 # command for running Genome_to_CDS python code from terminal
-GenomeToCDS = "python Genome_to_CDS.py -email {email}"
+GenomeToCDS = f"python Genome_to_CDS.py -email {email}"
 os.system(GenomeToCDS)
 
 # counting CDS regions in HCMV genome
@@ -35,12 +35,12 @@ countCDS = 'grep -c ">" HCMV_CDS.fasta'
 # saves the output number as numCDS variable
 numCDS = os.popen(countCDS)
 # writes to the log file
-log_file.write("The HCMV genome (NC_006273.2) has {numCDS} CDS.\n")
+log_file.write(f"The HCMV genome (NC_006273.2) has {numCDS} CDS.\n")
 
 # running kallisto
 # creating kallisto index
 kallistoIndex = "kallisto index -i index.idx HCMV_CDS.fasta"
-sys.os(kallistoIndex)
+os.system(kallistoIndex)
 # running kallisto on the samples by calling the RunKallisto python script
 kallistoRun = "python RunKallisto.py"
 os.system(kallistoRun)
@@ -102,7 +102,7 @@ with open("SluOut.txt", "r") as file:
 ProID = MDEproteinList[0]
 
 # fetching fasta file of protein of interest
-proteinFASTA = "python ProtOfInt.py --email {email} --proteinID {ProID}"
+proteinFASTA = f"python ProtOfInt.py --email {email} --proteinID {ProID}"
 os.system(proteinFASTA)
 
 # downloading virus genome for blast database
