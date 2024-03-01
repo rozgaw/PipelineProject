@@ -19,7 +19,8 @@ parent_folder = "data"
 # iterates over each sample folder within data
 for sample_folder in os.listdir(parent_folder):
     # get the sample names from the folder name
-    sample_name = os.path.basename(sample_folder)
+    sample_path = os.path.join(parent_folder, sample_folder)
+    sample_name = os.path.basename(sample_path)
 
     # gets the paths to the paired-end FASTQ files
     fastq1 = os.path.join(sample_folder, f"{sample_name}_1.fastq")
