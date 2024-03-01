@@ -45,6 +45,7 @@ Finally, the wrapper script in this repository will do the following:
 For this pipeline, sample data is provided. This data is a fragment of the original data modified by running the code below in the terminal. Update data and sampledata to the correct input file name and output.     
     
 head -n 40000 data.fastq > sampledata.fastq     
+     
 The sample data is stored in the data folder.    
 
 ### Notes
