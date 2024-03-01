@@ -1,6 +1,11 @@
 # PipelineProject
 Differential expression pipeline to compare HCMV transcriptomes of two individuals 2- and 6-days post-infection.
 
+Requirements:
+- Python: BioPython SeqIO, BioPython Entrez; sys; argparse
+- R: sleuth, dplyr
+- local machine/server: kallisto, blast 
+
 Before running this pipeline, download the transcriptomes from two patient donors from SRA and convert to paired-end fastq files. This can be done by running the following command in your terminal (where SRA_File_Links is a text file that contains each of the SRA links for the patients on a new line.
 
 Download the SRA files from terminal:
