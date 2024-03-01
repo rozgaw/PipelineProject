@@ -29,7 +29,8 @@ done
 For different analyses, make sure to update the sample names to match the downloaded files.   
 
 Next, rearrange the file organization. I downloaded the SRA files into a folder called "data" and then grouped each pair of paired-end reads into a folder of their sample name within the "data" folder.   
-For example, here are the file paths for the paired-end reads from sample SRR5660030 where ~ signifies the working directory:   
+For example, here are the file paths for the paired-end reads from sample SRR5660030 where ~ signifies the working directory:
+   
 ~/data/SRR5660030/SRR5660030_1.fastq    
 ~/data/SRR5660030/SRR5660030_2.fastq   
 
@@ -41,6 +42,7 @@ Finally, the wrapper script in this repository will do the following:
 - Retrieve a protein fasta file of the most differentially expressed CDS in the reference genome, running a blast of it against the Betaherpesvirinae subfamily, returning the subject accession, percent identity, alignment length, start of alignment in query, end of alignment in query, start of alignment in subject, end of alignment in subject, bit score, e-value, and subject title for the top ten hits.
 
 For this pipeline, sample data is provided. This data is a fragment of the original data modified by running the code below in the terminal. Update data and sampledata to the correct input file name and output.     
+    
 head -n 40000 data.fastq > sampledata.fastq     
 The sample data is stored in the data folder.    
 
