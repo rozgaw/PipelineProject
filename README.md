@@ -37,3 +37,6 @@ Finally, the wrapper script in this repository will do the following:
 - Quantify the TPM of each CDS in each transcriptome using Kallisto returning the sample, condition, min_tpm, med_tpm, mean_tpm, and max_tpm for each sample.
 - Use Sleuth to find differentially expressed genes between the two conditions returning the target_id, test_stat, pval, and qval of significant transcripts (FDR < 0.05)
 - Retrieve a protein fasta file of the most differentially expressed CDS in the reference genome, running a blast of it against the Betaherpesvirinae subfamily, returning the subject accession, percent identity, alignment length, start of alignment in query, end of alignment in query, start of alignment in subject, end of alignment in subject, bit score, e-value, and subject title for the top ten hits.
+
+For this pipeline, sample data is provided. This data is a fragment of the original data modified by running the code below in the terminal. Update data and sampledata to the correct input file name and output.
+head -n 40000 data.fastq > sampledata.fastq
