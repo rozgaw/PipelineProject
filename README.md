@@ -9,8 +9,11 @@ wget -i SRA_File_Links
 
 For this example, SRA_File_Links.txt contains the following:
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660030/SRR5660030
+
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660033/SRR5660033
+
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660044/SRR5660044
+
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660045/SRR5660045
 
 Next, convert the downloaded files into paired-end fastq files. This can be done by running the following code in the terminal, calling each SRA file by name.
