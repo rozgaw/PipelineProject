@@ -12,7 +12,7 @@ Download the SRA files from terminal:
 
 wget -i SRA_File_Links
 
-For this example, SRA_File_Links.txt contains the following with a newline after each url:
+For this example, SRA_File_Links.txt contains the following with a newline after each url (see SRA_File_Links for correct formatting):
 
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660030/SRR5660030
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660033/SRR5660033
