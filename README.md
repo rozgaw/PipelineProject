@@ -2,7 +2,7 @@
 Differential expression pipeline to compare HCMV transcriptomes of two individuals 2- and 6-days post-infection.
 
 Requirements:
-- Python: BioPython SeqIO, BioPython Entrez; sys; argparse
+- Python: BioPython SeqIO, BioPython Entrez; sys; argparse; pandas
 - R: sleuth, dplyr
 - local machine/server: kallisto, blast 
 
