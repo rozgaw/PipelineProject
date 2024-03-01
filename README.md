@@ -11,9 +11,9 @@ Before running this pipeline, download the transcriptomes from two patient donor
     
 Download the SRA files from terminal:
     
-wget -i SRA_File_Links  
+"wget -i SRA_File_Links"  
     
-For this example, SRA_File_Links.txt contains the following with a newline after each url (see SRA_File_Links for correct formatting):  
+For this example, "SRA_File_Links.txt" contains the following with a newline after each url (see SRA_File_Links for correct formatting):  
 
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660030/SRR5660030  
 https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660033/SRR5660033  
@@ -22,9 +22,9 @@ https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660045/SRR5660045
 
 Next, convert the downloaded files into paired-end fastq files. This can be done by running the following code in the terminal, calling each SRA file by name.  
 
-for file in SRR5660030 SRR5660033 SRR5660044 SRR5660045; do   
+"for file in SRR5660030 SRR5660033 SRR5660044 SRR5660045; do   
     fastq-dump -I --split-files "$file"   
-done   
+done"   
 
 For different analyses, make sure to update the sample names to match the downloaded files.   
 
@@ -44,7 +44,7 @@ Finally, the wrapper script in this repository will do the following:
 
 For this pipeline, sample data is provided. This data is a fragment of the original data modified by running the code below in the terminal. Update data and sampledata to the correct input file name and output.     
     
-head -n 40000 data.fastq > sampledata.fastq     
+"head -n 40000 data.fastq > sampledata.fastq"     
      
 The sample data is stored in the data folder.    
 
