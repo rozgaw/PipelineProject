@@ -21,7 +21,6 @@ arguments = check_arg()
 
 # assigns the email argument from argparse to email variable
 email = arguments.email
-
 # create and open log file for storing outputs
 # using a for appending, so content not overwritten each time
 log_file = open("PipelineProject_Roza_Gawin/PipelineProject.log", "a")
@@ -30,12 +29,15 @@ log_file = open("PipelineProject_Roza_Gawin/PipelineProject.log", "a")
 GenomeToCDS = f"python Genome_to_CDS.py -email {email}"
 os.system(GenomeToCDS)
 
+import subprocess
+
 # counting CDS regions in HCMV genome
 countCDS = 'grep -c ">" HCMV_CDS.fasta'
-# saves the output number as numCDS variable
-numCDS = os.popen(countCDS)
+# runs the command and captures output
+numCDS_process = subprocess.Popen(countCDS, shell=True, stdout=subprocess.PIPE)
+numCDS_output = numCDS_process.communicate()[0].decode().strip()  # retrieves output and decodes
 # writes to the log file
-log_file.write(f"The HCMV genome (NC_006273.2) has {numCDS} CDS.\n")
+log_file.write(f"The HCMV genome (NC_006273.2) has {numCDS_output} CDS.\n")
 
 # running kallisto
 # creating kallisto index
@@ -49,7 +51,7 @@ os.system(kallistoRun)
 log_file.write("sample\tcondition\tmin_tpm\tmed_tpm\tmean_tpm\tmax_tpm\n")
 
 # dictionary of samples which stores the condition and kalisto result file path
-samp_dict = {"SRR5660030":["2dpi", "/PipelineProject/results_kal/SRR5660030"], "SRR5660044":["2dpi", "/PipelineProject/results_kal/SRR5660044"], "SRR5660033":["6dpi", "/PipelineProject/results_kal/SRR5660033"], "SRR5660045":["6dpi", "/PipelineProject/results_kal/SRR5660033"]}
+samp_dict = {"SRR5660030":["2dpi", "/results_kal/SRR5660030"], "SRR5660044":["2dpi", "/results_kal/SRR5660044"], "SRR5660033":["6dpi", "/results_kal/SRR5660033"], "SRR5660045":["6dpi", "/results_kal/SRR5660033"]}
 
 # function for finding TPM values for each sample using a pandas df for easier calculations
 def TPMcalcs(file_path):
@@ -66,7 +68,7 @@ def TPMcalcs(file_path):
 for key, values in samp_dict.items():
     log_file.write(key +"\t")
     log_file.write(values[0] + "\t")
-    file_path = values[1]+"abundances.tsv"
+    file_path = f"{values[1]}/abundance.tsv"
     minTPM, medTPM, meanTPM, maxTPM = TPMcalcs(file_path)
     log_file.write(minTPM + "\t" + medTPM + "\t" + meanTPM + "\t" + maxTPM + "\n")
 
@@ -83,14 +85,14 @@ SluIn.close()
 
 # runs sleuth by calling R script for sleuth
 # set path to sleuth rscript
-sleuth_path = "/PipelineProject/Sleuth.R"
+sleuth = "Sleuth.R"
 # run sleuth, writting output to the log file (adding on to the contents, and not overwritting)
-os.system(f"Rscript {sleuth_path} >> {log_file}")
+os.system(f"Rscript {sleuth} >> {log_file}")
 
 # creates new file to store Sleuth output
-SluOut = open("SluOut.txt", "a")
+SluOut = "SluOut.txt"
 # running again to get output in another file
-os.system(f"Rscript {sleuth_path} >> {SluOut}")
+os.system(f"Rscript {sleuth} >> {SluOut}")
 # find most differencially expressed CDS from reference genome
 
 with open("SluOut.txt", "r") as file:
